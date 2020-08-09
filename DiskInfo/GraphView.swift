@@ -190,11 +190,14 @@ extension GraphView {
     
     // 2
     path.move( to: CGPoint(x:  rect.midX, y:rect.minY ))
-    path.addArc( tangent1End: CGPoint(x: rect.maxX, y: rect.minY ), tangent2End: CGPoint(x: rect.maxX, y: rect.maxY), radius: radius)
-    path.addArc( tangent1End: CGPoint(x: rect.maxX, y: rect.maxY ), tangent2End: CGPoint(x: rect.minX, y: rect.maxY), radius: radius)
-    path.addArc( tangent1End: CGPoint(x: rect.minX, y: rect.maxY ), tangent2End: CGPoint(x: rect.minX, y: rect.minY), radius: radius)
-    path.addArc( tangent1End: CGPoint(x: rect.minX, y: rect.minY ), tangent2End: CGPoint(x: rect.maxX, y: rect.minY), radius: radius)
-    
+    path.addArc( tangent1End: CGPoint(x: rect.maxX, y: rect.minY ),
+                 tangent2End: CGPoint(x: rect.maxX, y: rect.maxY), radius: radius)
+    path.addArc( tangent1End: CGPoint(x: rect.maxX, y: rect.maxY ),
+                 tangent2End: CGPoint(x: rect.minX, y: rect.maxY), radius: radius)
+    path.addArc( tangent1End: CGPoint(x: rect.minX, y: rect.maxY ),
+                 tangent2End: CGPoint(x: rect.minX, y: rect.minY), radius: radius)
+    path.addArc( tangent1End: CGPoint(x: rect.minX, y: rect.minY ),
+                 tangent2End: CGPoint(x: rect.maxX, y: rect.minY), radius: radius)
     path.closeSubpath()
     
     // 3
