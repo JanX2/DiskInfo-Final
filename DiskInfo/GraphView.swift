@@ -121,6 +121,8 @@ extension GraphView {
       return
     }
     
+    let usedSpace = fileDistribution.capacity - fileDistribution.available
+    
     // 1
     let rect = pieChartRectangle()
     let circle = NSBezierPath(ovalIn: rect)
@@ -132,7 +134,7 @@ extension GraphView {
     // 2
     let path = NSBezierPath()
     let center = CGPoint(x: rect.midX, y: rect.midY)
-    let usedPercent = Double(fileDistribution.capacity - fileDistribution.available) /
+    let usedPercent = Double(usedSpace) /
       Double(fileDistribution.capacity)
     let endAngle = CGFloat(360 * usedPercent)
     let radius = rect.size.width / 2.0
@@ -157,7 +159,7 @@ extension GraphView {
     let halfRadius = radius / 2.0
     
     // 2
-    let usedSpaceText = bytesFormatter.string(fromByteCount: fileDistribution.capacity)
+    let usedSpaceText = bytesFormatter.string(fromByteCount: usedSpace)
     let usedSpaceTextAttributes = [
       NSAttributedString.Key.font: NSFont.pieChartLegendFont,
       NSAttributedString.Key.foregroundColor: NSColor.pieChartUsedSpaceTextColor]
