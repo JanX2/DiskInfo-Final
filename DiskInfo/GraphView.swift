@@ -167,7 +167,7 @@ extension GraphView {
     let yPos = rect.midY + CGFloat(sin(usedMidAngle.radians)) *
       halfRadius - (usedSpaceTextSize.height / 2.0)
     usedSpaceText.draw(at: CGPoint(x: xPos, y: yPos),
-                              withAttributes: usedSpaceTextAttributes)
+                       withAttributes: usedSpaceTextAttributes)
     
     // 3
     let availableSpaceText = bytesFormatter.string(fromByteCount: fileDistribution.available)
@@ -180,7 +180,7 @@ extension GraphView {
     let availableYPos = rect.midY + sin(-availableMidAngle.radians) *
       halfRadius - (availableSpaceTextSize.height / 2.0)
     availableSpaceText.draw(at: CGPoint(x: availableXPos, y: availableYPos),
-                                   withAttributes: availableSpaceTextAttributes)
+                            withAttributes: availableSpaceTextAttributes)
   }
   
   func drawRoundedRect(_ rect: CGRect, inContext context: CGContext?,
