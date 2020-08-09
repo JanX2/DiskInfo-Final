@@ -218,7 +218,7 @@ extension GraphView {
                     fillColor: barChartAvailableFillColor.cgColor)
     
     // 1
-    if let fileTypes = fileDistribution?.distribution , let capacity = fileDistribution?.capacity, capacity > 0 {
+    if let fileTypes = fileDistribution?.distribution, let capacity = fileDistribution?.capacity, capacity > 0 {
       var clipRect = barChartRect
       // 2
       for (index, fileType) in fileTypes.enumerated() {
@@ -230,6 +230,7 @@ extension GraphView {
         // 4
         context?.saveGState()
         context?.clip(to: clipRect)
+        
         let fileTypeColors = colorsForFileType(fileType)
         drawRoundedRect(barChartRect, inContext: context,
                         radius: Constants.barChartCornerRadius,
