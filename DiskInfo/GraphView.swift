@@ -29,7 +29,7 @@ import Cocoa
   override func draw(_ dirtyRect: NSRect) {
     super.draw(dirtyRect)
     
-    let context = NSGraphicsContext.current()?.cgContext
+    let context = NSGraphicsContext.current?.cgContext
     drawBarGraphInContext(context)
     
     drawPieChart()
@@ -159,8 +159,8 @@ extension GraphView {
     // 2
     let usedSpaceText = bytesFormatter.string(fromByteCount: fileDistribution.capacity)
     let usedSpaceTextAttributes = [
-      NSFontAttributeName: NSFont.pieChartLegendFont,
-      NSForegroundColorAttributeName: NSColor.pieChartUsedSpaceTextColor]
+      NSAttributedString.Key.font: NSFont.pieChartLegendFont,
+      NSAttributedString.Key.foregroundColor: NSColor.pieChartUsedSpaceTextColor]
     let usedSpaceTextSize = usedSpaceText.size(withAttributes: usedSpaceTextAttributes)
     let xPos = rect.midX + CGFloat(cos(usedMidAngle.radians)) *
       halfRadius - (usedSpaceTextSize.width / 2.0)
@@ -172,8 +172,8 @@ extension GraphView {
     // 3
     let availableSpaceText = bytesFormatter.string(fromByteCount: fileDistribution.available)
     let availableSpaceTextAttributes = [
-      NSFontAttributeName: NSFont.pieChartLegendFont,
-      NSForegroundColorAttributeName: NSColor.pieChartAvailableSpaceTextColor]
+      NSAttributedString.Key.font: NSFont.pieChartLegendFont,
+      NSAttributedString.Key.foregroundColor: NSColor.pieChartAvailableSpaceTextColor]
     let availableSpaceTextSize = availableSpaceText.size(withAttributes: availableSpaceTextAttributes)
     let availableXPos = rect.midX + cos(-availableMidAngle.radians) *
       halfRadius - (availableSpaceTextSize.width / 2.0)
@@ -257,8 +257,8 @@ extension GraphView {
         paragraphStyle.lineBreakMode = .byTruncatingTail
         paragraphStyle.alignment = .left
         let nameTextAttributes = [
-          NSFontAttributeName: NSFont.barChartLegendNameFont,
-          NSParagraphStyleAttributeName: paragraphStyle]
+          NSAttributedString.Key.font: NSFont.barChartLegendNameFont,
+          NSAttributedString.Key.paragraphStyle: paragraphStyle]
         
         // 3
         let nameTextSize = fileType.name.size(withAttributes: nameTextAttributes)
@@ -275,9 +275,9 @@ extension GraphView {
         // 5
         let bytesText = bytesFormatter.string(fromByteCount: fileTypeInfo.bytes)
         let bytesTextAttributes = [
-          NSFontAttributeName: NSFont.barChartLegendSizeTextFont,
-          NSParagraphStyleAttributeName: paragraphStyle,
-          NSForegroundColorAttributeName: NSColor.secondaryLabelColor]
+          NSAttributedString.Key.font: NSFont.barChartLegendSizeTextFont,
+          NSAttributedString.Key.paragraphStyle: paragraphStyle,
+          NSAttributedString.Key.foregroundColor: NSColor.secondaryLabelColor]
         let bytesTextSize = bytesText.size(withAttributes: bytesTextAttributes)
         let bytesTextRect = legendNameRect.offsetBy(dx: 0.0, dy: -bytesTextSize.height)
         bytesText.draw(in: bytesTextRect, withAttributes: bytesTextAttributes)
