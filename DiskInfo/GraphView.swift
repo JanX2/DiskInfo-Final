@@ -153,7 +153,7 @@ extension GraphView {
     
     // 1
     let usedMidAngle = endAngle / 2.0
-    let availableMidAngle = (360.0 - endAngle) / 2.0
+    let availableMidAngle = (180.0 - endAngle) / 2.0
     let halfRadius = radius / 2.0
     
     // 2
@@ -175,9 +175,9 @@ extension GraphView {
       NSAttributedString.Key.font: NSFont.pieChartLegendFont,
       NSAttributedString.Key.foregroundColor: NSColor.pieChartAvailableSpaceTextColor]
     let availableSpaceTextSize = availableSpaceText.size(withAttributes: availableSpaceTextAttributes)
-    let availableXPos = rect.midX + cos(-availableMidAngle.radians) *
+    let availableXPos = rect.midX + cos(availableMidAngle.radians) *
       halfRadius - (availableSpaceTextSize.width / 2.0)
-    let availableYPos = rect.midY + sin(-availableMidAngle.radians) *
+    let availableYPos = rect.midY + sin(availableMidAngle.radians) *
       halfRadius - (availableSpaceTextSize.height / 2.0)
     availableSpaceText.draw(at: CGPoint(x: availableXPos, y: availableYPos),
                             withAttributes: availableSpaceTextAttributes)
